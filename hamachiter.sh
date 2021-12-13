@@ -79,6 +79,7 @@ select aybar in "${Menu[@]}"; do
        echo -n "ip no : "
        read ip
        echo "PID NO $$"
+       trap "echo _işlem iptal edildi" 2
        ping -c $say $ip > /tmp/ping.log
        sino
        if  [ $? -eq 0 ]
