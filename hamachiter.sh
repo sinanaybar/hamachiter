@@ -78,6 +78,7 @@ select aybar in "${Menu[@]}"; do
        read say
        echo -n "ip no : "
        read ip
+       echo "PID NO $$"
        ping -c $say $ip > /tmp/ping.log
        sino
        if  [ $? -eq 0 ]
