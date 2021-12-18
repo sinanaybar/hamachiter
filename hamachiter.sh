@@ -2,9 +2,28 @@
 #Hamachi için terminal de bir arayüzü yapım aşaması
 #Bu uyg çalışabilmesi için logmein-hamachi kurulu olması gerekmektedir.
 #aybarsinan@gmail.com
+
+#Renk Seçimi
+cam='\e[0;36m'
+yesil='\e[0;34m'
+Yesillik='\033[92m'
+acikyesil='\e[1;32m'
+beyaz='\e[1;37m'
+Kirmizi='\e[1;31m'
+sari='\e[1;33m'
+Mavi='\e[1;34m'
+
+echo -e $Kirmizi"
+╭╮╱╭┳━━━┳━╮╭━┳━━━┳━━━┳╮╱╭┳━━━━┳━━━┳━━━╮
+┃┃╱┃┃╭━╮┃┃╰╯┃┃╭━╮┃╭━╮┃┃╱┃┃╭╮╭╮┃╭━━┫╭━╮┃
+┃╰━╯┃┃╱┃┃╭╮╭╮┃┃╱┃┃┃╱╰┫╰━╯┣┫┃┃╰┫╰━━┫╰━╯┃
+┃╭━╮┃╰━╯┃┃┃┃┃┃╰━╯┃┃╱╭┫╭━╮┣┫┃┃╱┃╭━━┫╭╮╭╯
+┃┃╱┃┃╭━╮┃┃┃┃┃┃╭━╮┃╰━╯┃┃╱┃┃┃┃┃╱┃╰━━┫┃┃╰╮
+╰╯╱╰┻╯╱╰┻╯╰╯╰┻╯╱╰┻━━━┻╯╱╰┻╯╰╯╱╰━━━┻╯╰━╯"
+
 function sino()
 {
-        echo "_____________________________________________________________________________"
+        echo -e $Mavi"_____________________________________________________________________________"
 
 }
 sino
@@ -13,70 +32,70 @@ Menu=("Başlat" "Giriş" "Hamachi" "Liste" "Server" "Katıl" "Ayrıl" "Sil" "Bil
 select aybar in "${Menu[@]}"; do
 	case $aybar in
 	"Başlat")
-        echo "Hamachi $aybar "
+        echo -e $cam"Hamachi $aybar "
 		sudo /etc/init.d/logmein-hamachi start
 		sino
 		;;
 		"Giriş")
-		echo "Hamachi $aybar "
+		echo -e $cam"Hamachi $aybar "
 		sudo hamachi login
 		sino
 		;;
     "Hamachi")
-        echo "Hamachi Menü $aybar "
+        echo -e $sari"Hamachi Menü $aybar "
 		sudo hamachi
 		sino
 		;;
 	"Liste")
-        echo "Hamachi Mevcut Kurulmuş $aybar "
+        echo -e $cam"Hamachi Mevcut Kurulmuş $aybar "
 		sudo hamachi list
 		sino
         ;;
          "Server")
-        echo "Oyun ağı kurulumu $aybar "
-		echo -n "isim girin : "
+        echo -e $cam"Oyun ağı kurulumu $aybar "
+		echo -n -e $beyaz"isim girin : "
 		read isim
-		echo -n "şifre girin : "
+		echo -n -e $beyaz"şifre girin : "
 		read sayi
 		sudo hamachi create $isim $sayi
 		sino
 		;;
 	"Katıl")
-        echo "Mevcut Gruba $aybar "
-		echo -n "isim girin : "
+        echo -e $cam"Mevcut Gruba $aybar "
+		echo -n -e $beyaz"isim girin : "
 		read a
-		echo -n "şifre girin : "
+		echo -n -e $beyaz"şifre girin : "
 		read s
 		sudo hamachi join $a $s
 		sino
 		;;
 		"Ayrıl")
-		echo "Bağlı olduğun ağdan $aybar"
-		echo -n "ID no : "
+		echo -e $cam"Bağlı olduğun ağdan $aybar"
+		echo -n -e $beyaz"ID no : "
 		read idno
 		sudo hamachi leave $idno
 		sino
 		;;
 	"Sil")
-        echo "Silinecek Kurulmus Grub $aybar "
-		echo -n "Silinecek : "
+        echo -e $cam"Silinecek Kurulmus Grub $aybar "
+		echo -n -e $beyaz"Silinecek : "
 		read adi
 		sudo hamachi delete $adi
 		sino
        ;;
        "Bilgi")
-       echo "Ağ Hakkında $aybar "
-       echo -n "ID no : "
+       echo -e $cam"Ağ Hakkında $aybar "
+       echo -n -e $beyaz"ID no : "
        read idno
        sudo hamachi network $idno
        netstat -tunp
        sino
        ;;
        "Ping")
-       echo  $aybar
-       echo -n "Sayısı : "
+       echo  -e $cam $aybar
+       echo -n -e $beyaz"Sayısı : "
        read say
-       echo -n "ip no : "
+       echo -n -e $beyaz"ip no : "
        read ip
        echo "PID NO $$"
        trap "echo _işlem iptal edildi" 2
@@ -84,24 +103,24 @@ select aybar in "${Menu[@]}"; do
        sino
        if  [ $? -eq 0 ]
         then
-            echo Tamam
+            echo -e $beyaz"Tamam"
            else
-            echo Hata
+            echo -e $Kirmizi "Hata"
         fi
        tail -n 4  /tmp/ping.log
        sino
         ;;
         "Çık" )
-        echo "Hamachi oturumu kapatildi $aybar "
+        echo -e $cam"Hamachi oturumu kapatildi $aybar "
 		sudo hamachi logoff
 		sino
 		;;
 		"Çıkış")
 		clear
 		sino
-	    echo "________________________________Çıkış Yapıldı________________________________"
+	    echo -e $Kirmizi"________________________________Çıkış Yapıldı________________________________"
 	    exit
 	    ;;
-		*) echo "Hatalı Girdi $REBLY";;
+		*) echo -e $Kirmizi"Hatalı Girdi $REBLY";;
 	esac
 done
