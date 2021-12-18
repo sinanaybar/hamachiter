@@ -3,7 +3,7 @@
 #Bu uyg çalışabilmesi için logmein-hamachi kurulu olması gerekmektedir.
 #aybarsinan@gmail.com
 
-#Renk Seçimi
+#Renk Secenekleri
 cam='\e[0;36m'
 yesil='\e[0;34m'
 Yesillik='\033[92m'
