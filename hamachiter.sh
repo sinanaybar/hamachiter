@@ -12,6 +12,8 @@ beyaz='\e[1;37m'
 Kirmizi='\e[1;31m'
 sari='\e[1;33m'
 Mavi='\e[1;34m'
+Siyah='\e[0;30m'
+Mor='\e[0;35m'
 
 echo -e $Kirmizi"
 ╭╮╱╭┳━━━┳━╮╭━┳━━━┳━━━┳╮╱╭┳━━━━┳━━━┳━━━╮
