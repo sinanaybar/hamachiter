@@ -8,7 +8,3 @@ Since I had connection problems with the existing guis for logmein-hamachi, I de
 
 https://resmim.net/i/SEXSkC
 
-
-youtube de mevcut videosu burdan bakabilirniz.
-
-https://www.youtube.com/watch?v=nQGlhgkTz10
