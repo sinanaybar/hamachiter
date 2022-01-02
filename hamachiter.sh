@@ -102,12 +102,13 @@ select aybar in "${Menu[@]}"; do
        echo "PID NO $$"
        trap "echo _işlem iptal edildi" 2
        ping -c $say $ip > /tmp/ping.log
+       err=`echo $?`
        sino
-       if  [ $? -eq 0 ]
+       if  [ $err -gt 1 ];
         then
-            echo -e $beyaz"Tamam"
+            echo -e $Kirmizi"$ip Ana bilgisayara ulaşılamıyor"
            else
-            echo -e $Kirmizi "Hata"
+            echo -e $beyaz "$ip Ping işlem tamamdır"
         fi
        tail -n 4  /tmp/ping.log
        sino
